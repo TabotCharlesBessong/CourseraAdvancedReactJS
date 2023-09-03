@@ -1,7 +1,8 @@
 import React from 'react'
-import {DessertsList, Feedback, Todo} from './components'
+import {DessertsList, Feedback, Registration, Todo} from './components'
 import data from './constant/data'
 import { useState } from 'react';
+import './App.css'
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -19,7 +20,7 @@ const App = () => {
     setTodos([...todos].reverse())
   }
   return (
-    <div>
+    <div className='App' >
       {/* <DessertsList data={data.desserts} /> */}
       {/* <button onClick={reverseOrder} >Reverse</button>
       <table>
@@ -29,7 +30,8 @@ const App = () => {
           ))}
         </tbody>
       </table> */}
-      <Feedback />
+      {/* <Feedback /> */}
+      <Registration />
     </div>
   )
 }
