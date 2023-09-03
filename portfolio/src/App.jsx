@@ -1,5 +1,5 @@
 import React from 'react'
-import {DessertsList, Todo} from './components'
+import {DessertsList, Feedback, Todo} from './components'
 import data from './constant/data'
 import { useState } from 'react';
 
@@ -21,14 +21,15 @@ const App = () => {
   return (
     <div>
       {/* <DessertsList data={data.desserts} /> */}
-      <button onClick={reverseOrder} >Reverse</button>
+      {/* <button onClick={reverseOrder} >Reverse</button>
       <table>
         <tbody>
           {todos.map((todo,i) => (
             <Todo key={todo.id} id={todo.id} createdAt={todo.createdAt} />
           ))}
         </tbody>
-      </table>
+      </table> */}
+      <Feedback />
     </div>
   )
 }
