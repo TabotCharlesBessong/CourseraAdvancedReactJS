@@ -1,39 +1,36 @@
-import React from 'react'
-import {DessertsList, Feedback, Registration, Todo} from './components'
-import data from './constant/data'
-import { useState } from 'react';
-import './App.css'
+import { useState } from "react";
 
-const App = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: "todo1",
-      createdAt: "18:00",
-    },
-    {
-      id: "todo2",
-      createdAt: "20:30",
-    },
-  ]);
+export default function App() {
+  const [giftCard, setGiftCard] = useState({
+    firstName: "Jennifer",
+    lastName: "Smith",
+    text: "Free dinner for 4 guests",
+    valid: true,
+    instructions: "To use your coupon, click the button below.",
+  });
 
-  const reverseOrder = () => {
-    setTodos([...todos].reverse())
+  function spendGiftCard() {
+    setGiftCard((prevState) => {
+      return {
+        ...prevState,
+        text: "Your coupon has been used.",
+        valid: false,
+        instructions: "Please visit our restaurant to renew your gift card.",
+      };
+    });
   }
-  return (
-    <div className='App' >
-      {/* <DessertsList data={data.desserts} /> */}
-      {/* <button onClick={reverseOrder} >Reverse</button>
-      <table>
-        <tbody>
-          {todos.map((todo,i) => (
-            <Todo key={todo.id} id={todo.id} createdAt={todo.createdAt} />
-          ))}
-        </tbody>
-      </table> */}
-      {/* <Feedback /> */}
-      <Registration />
-    </div>
-  )
-}
 
-export default App
+  return (
+    <div style={{ padding: "40px" }}>
+      <h1>Gift Card Page</h1>
+      <h2>
+        Customer: {giftCard.firstName} {giftCard.lastName}
+      </h2>
+      <h3>{giftCard.text}</h3>
+      <p>{giftCard.instructions}</p>
+      {giftCard.valid && (
+        <button onClick={spendGiftCard}>Spend Gift Card</button>
+      )}
+    </div>
+  );
+}
