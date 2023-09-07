@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 function App() {
   const [user, setUser] = React.useState([]);
@@ -14,6 +15,13 @@ function App() {
   React.useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if(user === []){
+      setUser(['hello'])
+      console.log('hi')
+    }
+  })
 
   return Object.keys(user).length > 0 ? (
     <div style={{ padding: "40px" }}>
