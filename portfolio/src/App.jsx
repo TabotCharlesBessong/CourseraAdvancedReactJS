@@ -1,36 +1,20 @@
-import React from "react";
-import { useEffect } from "react";
+import "./App.css";
+import { RadioGroup, RadioOption } from "./components/radio";
+import { useState } from "react";
 
 function App() {
-  const [user, setUser] = React.useState([]);
-
-  const fetchData = () => {
-    fetch("https://randomuser.me/api/?results=1")
-      .then((response) => response.json())
-      .then((data) => setUser(data));
-
-    console.log(user)
-  };
-
-  React.useEffect(() => {
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    if(user === []){
-      setUser(['hello'])
-      console.log('hi')
-    }
-  })
-
-  return Object.keys(user).length > 0 ? (
-    <div style={{ padding: "40px" }}>
-      <h1>Customer data</h1>
-      <h2>Name: {user.results[0].name.first}</h2>
-      <img src={user.results[0].picture.large} alt="" />
+  const [selected, setSelected] = useState("");
+  return (
+    <div className="App">
+      <h2>How did you hear about Little Lemon?</h2>
+      <RadioGroup onChange={setSelected} selected={selected}>
+        <RadioOption value="social_media">Social Media</RadioOption>
+        <RadioOption value="friends">Friends</RadioOption>
+        <RadioOption value="advertising">Advertising</RadioOption>
+        <RadioOption value="other">Other</RadioOption>
+      </RadioGroup>
+      <button disabled={!selected}>Submit</button>
     </div>
-  ) : (
-    <h1>Data pending...</h1>
   );
 }
 
